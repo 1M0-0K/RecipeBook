@@ -1,5 +1,5 @@
 # Recipe book
-A simple webiste to store recipes. It uses a simple API to store, modify and remove recipes.
+A simple website to store recipes. It uses a simple API to store, modify and remove recipes.
 
 ![Website Preview](/screenshots/recipe_book_list.png)
 
