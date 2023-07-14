@@ -25,9 +25,9 @@ A simple webiste to store recipes. It uses a simple API to store, modify and rem
    * `cd server`
    * `node index.js`
  
-Use server_dev for development and server for deployment. Move the server/server_dev folder to build directory before you start it.
+Use "server_dev" for development and server for deployment. Move the "server"/"server_dev" folder to build directory before you start it.
 
-##Preview
+## Preview
 The website is a Single Page Website with the possibility of searching, sorting and filtering the recipes in the left side of the page while in the right side of the page the recipes are displayed.
 
 ![Website Welcome Screen](/screenshots/recipe_book_list.png)
