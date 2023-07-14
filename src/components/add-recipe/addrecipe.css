@@ -1,0 +1,441 @@
+.modal{
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 9001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.add-recipe{
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.add-recipe-header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.add-recipe-header>input{
+    width: calc(100% - 35px);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: inset 0px -2px 0px -1px var(--secondary);
+}
+
+.add-recipe-header>input:focus,
+.add-recipe-header>input:focus-visible{
+    box-shadow: inset 0px -2px 0px -1px var(--accent);
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--primary);
+    right: 15px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s linear;
+}
+
+.close:active{
+    background-color: white;
+    border-color: var(--accent);
+}
+
+@media (hover:hover){
+    .close:hover{
+        background-color: white;
+        border-color: var(--accent);
+    }
+}
+
+.close::before{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.close::after{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(-45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.add-recipe-body{
+    display: flex;
+    height: calc(100% - 120px);
+}
+
+.add-recipe-body>div{
+    width: 50%;
+    padding: 10px 15px;
+}
+
+.add-recipe-body>.left{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    padding-top: 0;
+}
+
+.add-recipe-body>.left>label{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    margin-top: 13px;
+}
+
+.add-recipe-body>.left>label>span{
+    padding: 2px 10px;
+    font-weight: initial;
+    margin: 0 23px;
+    background-color: var(--primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary);
+    position: relative;
+}
+
+@media (hover:hover){
+    .add-recipe-body>.left>label>span:hover{
+      background-color: white;
+      border: 1px solid var(--accent);
+    }
+}
+
+.add-recipe-body>.left>label>span:active{
+  background-color: white;
+  border: 1px solid var(--accent);
+}
+
+.add-recipe-body>.left>label>p{
+    font-size: 0.9rem;
+    width: calc(100% - 156px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.add-recipe-body>.left>label>input{
+    display: none;
+}
+
+.add-recipe-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.add-recipe-details>li{
+    width: 100%;
+    height: 24px;
+    font-size: 1rem;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 500;
+}
+
+.left>.add-recipe-details>li>input{
+    width: 285px;
+    padding-left: 10px;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 13px/ 4px 1px repeat-x, white;
+}
+
+.left>.add-recipe-details>li>input:focus,
+.left>.add-recipe-details>li>input:focus-visible{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 13px/ 100% 1px no-repeat, white;
+}
+
+.add-recipe-body>.left>h3,
+.add-recipe-body>.right>.add-recipe-scroll-lock>h3{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>h3{
+    margin-top: 0;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>div{
+    width: calc(100% - 23px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>div>h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>ol>div{
+    width: calc(100% - 23px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>ol>div>h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.left>.add-recipe-scroll-lock>li>input{
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 3px, transparent 3px, transparent 4px) left 15px/ 4px 1px repeat-x, white;
+    width: 80px;
+}
+
+.add-recipe-body .add-recipe-scroll-lock li{
+    width: calc(100% - 28px);
+    height: 20px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 15px/ 4px 1px repeat-x;
+    position: relative;
+}
+
+ul.add-recipe-scroll-lock>li:last-child,
+.add-recipe-scroll-lock>ol>li:last-child,
+.add-recipe-scroll-lock>ul>li:last-child{
+    margin-top: 15px;
+}
+
+li>input{
+    background: linear-gradient(to right, var(--accent), var(--accent)) center 15px/ 0% 1px no-repeat, white;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+
+.right>.add-recipe-scroll-lock li>input{
+    width: 100%;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 15px/ 4px 1px repeat-x, hsl(0deg 25% 96%);
+    /* background-color: hsl(0deg 25% 96%); */
+}
+
+.left li>input:focus-visible,
+.left li>input:focus{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 15px/ 100% 1px no-repeat, white;
+    box-shadow: 0 0 0 transparent;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock li>input:focus-visible,
+.add-recipe-body>.right>.add-recipe-scroll-lock li>input:focus{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 15px/ 100% 1px no-repeat, hsl(0deg 24% 96%);
+    box-shadow: 0 0 0 transparent;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>li>p{
+    background-color: white;
+}
+
+.add-recipe-scroll-lock{
+    overflow-y: scroll;
+    scrollbar-width: none; 
+}
+
+.add-recipe-scroll-lock::-webkit-scrollbar{
+  width: 0;
+}
+
+.left>.add-recipe-scroll-lock{
+    height: 265px;
+}
+
+.right>.add-recipe-scroll-lock{
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.right>.add-recipe-scroll-lock>ol{
+    margin-bottom: 20px;
+}
+
+.right>.add-recipe-scroll-lock>ol>li{
+    margin-bottom:5px;
+    list-style: decimal outside none;
+}
+
+.right>.add-recipe-scroll-lock>ul>li{
+    list-style: disc outside none;
+}
+
+.right>add-recipe-scroll-lock>ol>li:last-child,
+.right>add-recipe-scroll-lock>ul>li:last-child{
+    margin-left: 0;
+    list-style: none;
+}
+
+.right>.add-recipe-scroll-lock li{
+    width: calc(100% - 28px);
+    height: 20px;
+    margin-left: 5px;
+}
+
+.right>.add-recipe-scroll-lock li>p{
+    background-color: hsl(0deg 24% 96%);
+	white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-recipe-body>.right{
+    width: calc(50% - 15px);
+    background-color: hsl(0deg 24% 96%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.add-recipe-footer{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.add-recipe-footer>button{
+    align-self: center;
+}
+
+.mini-add{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: -22px;
+    color: var(--accent);
+}
+
+.mini-add::before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-left: 2px;
+    margin-top: -1px;
+}
+
+.mini-add::after{
+    content: "";
+    width: 2px;
+    height: 10px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-top: 2px;
+    top: 0;
+    margin-left: 6px;
+}
+
+
+.mini-remove{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: -22px;
+    color: var(--accent);
+}
+
+.mini-remove::before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-left: 2px;
+    margin-top: -1px;
+}
+
+
+@media only screen and (max-width: 825px){
+    .add-recipe-body{
+        flex-direction: column;
+    } 
+
+    .modal{
+        align-items: flex-start;
+        overflow-y: scroll;
+    }
+
+    .add-recipe{
+        width: auto;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .add-recipe-body>.right,
+    .add-recipe-body>div{
+        width: 100%;
+    }
+
+    .add-recipe-footer>button{
+        width: 150px;
+    }
+
+    .right>.add-recipe-scroll-lock{
+        max-height: 500px;
+        height: auto
+    }
+
+    .left>.add-recipe-scroll-lock{
+        max-height: 250px;
+        height: auto;
+        margin-bottom: 30px;
+    }
+}
+
+
+@media only screen and (max-width: 450px){
+    .add-recipe{
+        margin: 0;
+        width: 100%;
+    }
+}
+
+
