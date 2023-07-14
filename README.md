@@ -24,6 +24,7 @@ A simple webiste to store recipes. It uses a simple API to store, modify and rem
 2. NodeJS:
    * `cd server`
    * `node index.js`
+ 
 Use server_dev for development and server for deployment. Move the server/server_dev folder to build directory before you start it.
 
 ##Preview
@@ -50,8 +51,3 @@ To view the full recipe click on the specific card and the recipe will be shown:
 To add a new recipe click the button "New Recipe":
 
 ![Website add recipe](/screenshots/recipe_book_add.png)
-
-
-  * Press Middle mouse button or Alt and Left mouse button and move the image around.
-- Zoom
-  * Scroll to Zoom-In or Zoom-Out, press Alt to use smaller steps
