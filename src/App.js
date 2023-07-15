@@ -7,7 +7,7 @@ import HeaderMobile from './components/header-mobile/HeaderMobile';
 
 function App() {
 
-  const {data:fetchedRecipeList, isLoading, error, setRequest} = useQuery("http://192.168.0.103:3001");
+  const {data:fetchedRecipeList, isLoading, error, setRequest} = useQuery("http://localhost:3001");
 
   //States
 
