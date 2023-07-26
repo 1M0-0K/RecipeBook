@@ -5,6 +5,7 @@ main{
   background-color: hsl(0deg 24% 96%);
   padding: 15px 15px;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 main::-webkit-scrollbar{
