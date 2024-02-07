@@ -13,19 +13,21 @@ A simple website to store recipes. It uses a simple API to store, modify and rem
   - HTML
   - CSS
   - ReactJS
+  - Redux
 - BackEnd:
   - NodeJS
   - Express
+  - SQLite3
 
 ## Setup
-1. ReactJS:
+1. Development:
    * `npm install`
-   * `npm run build`
-2. NodeJS:
-   * `cd server`
-   * `node index.js`
+   * `npm start`
+   * `npm run dev`
+2. Live:
+   * `npm build`
+   * `npm start`
  
-Use "server_dev" for development and server for deployment. Move the "server"/"server_dev" folder to build directory before you start it.
 
 ## Preview
 The website is a Single Page Website with the possibility of searching, sorting and filtering the recipes in the left side of the page while in the right side of the page the recipes are displayed.
