@@ -9,13 +9,17 @@ let options = {root: __dirname + '/app/build'};
 
 
 const fs = require('fs');
-
+const dbDir = 'data';
+const imgDir = 'uploads';
 
 const app = express();
 app.use(express.json())
 app.use(cors());
 
 const initDB = () => {
+	if(!fs.existsSync('./'+dbDir)){
+		fs.mkdirSync('./'+dbDir)
+	}
     db = new sqlite3.Database('./data/recipes.db', err => errorCheck(err,"Connected  to the database"));
     db.run(`CREATE TABLE IF NOT EXISTS recipes(
         id timestamp(0) ,
@@ -44,6 +48,9 @@ const errorCheck = (err, msg) => {
 //Write function for the images
 const writeImage = (data, img) => new Promise((res, rej) => {
 
+	if(!fs.existsSync('./'+imgDir)){
+		fs.mkdirSync('./'+imgDir)
+	}
     fs.writeFile(`${__dirname}/uploads/${img}`, data, (err) => {
         if(err){
             rej("image_save_fail");
