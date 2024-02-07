@@ -1,0 +1,93 @@
+.modal-dialog{
+    inset: 0;
+    background-color: transparent;
+    position: fixed;
+    z-index: 9001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog{
+    width: 250px;
+    height: 160px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-header{
+    width: 100%;
+    height: 40px;
+}
+
+.dialog-close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--primary);
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s linear;
+}
+
+.dialog-close:hover{
+    background-color: white;
+    border-color: var(--accent);
+}
+
+.dialog-close::before{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.dialog-close::after{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(-45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.dialog-body{
+    display: flex;
+    width: 100%;
+    height: 70px;
+    padding: 10px 15px;
+    align-items: center;
+}
+
+.dialog-body>p{
+    margin-top: -10px;
+    font-size: 0.95rem;
+}
+
+.dialog-footer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.dialog-footer>button{
+    width: 40%;
+    height: 30px;
+    font-size: 0.9rem;
+}

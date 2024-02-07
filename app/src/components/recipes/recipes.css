@@ -1,0 +1,29 @@
+
+main{
+  width: calc(100% - var(--aside-width));
+  height: 100%;
+  background-color: hsl(0deg 24% 96%);
+  padding: 15px 15px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+main::-webkit-scrollbar{
+  width: 0;
+}
+
+.recipes{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+@media only screen and (max-width: 825px){/*600px*/
+  main{
+    width: 100%;
+    padding-top: 60px;
+  }
+}
+
+

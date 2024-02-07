@@ -1,0 +1,25 @@
+{
+  "short_name": "Recipes",
+  "name": "Recipe book",
+  "icons": [
+    {
+      "src": "./assets/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "./assets/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./assets/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#fec429",
+  "background_color": "#fec429"
+}
