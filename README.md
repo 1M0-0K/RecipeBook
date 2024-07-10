@@ -1,5 +1,6 @@
 # Recipe book
 A simple website to store recipes. It uses a simple API to store, modify and remove recipes.
+For ReactJs version check the [Main Branch](https://github.com/1M0-0K/RecipeBook).
 
 ![Website Preview](/screenshots/recipe_book_list.png)
 
@@ -12,22 +13,15 @@ A simple website to store recipes. It uses a simple API to store, modify and rem
 - FrontEnd: 
   - HTML
   - CSS
-  - ReactJS
-  - Redux
+  - Javascript
 - BackEnd:
-  - NodeJS
-  - Express
-  - SQLite3
+  - PHP
+  - MySQL
 
 ## Setup
-1. Development:
-   * `npm install`
-   * `npm start`
-   * `npm run dev`
-2. Live:
-   * `npm build`
-   * `npm start`
- 
+1. Deploy:
+   * `Change database info in /config/database.php`
+   * `Change the directory where you want the images to be stored in /src/api/recipe.php. Default if /resource/images/`
 
 ## Preview
 The website is a Single Page Website with the possibility of searching, sorting and filtering the recipes in the left side of the page while in the right side of the page the recipes are displayed.
