@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="./css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+  <title>Home</title>
+</head>
+<body>
+  <div id="notifications"></div>
+
+  <div class="container">
+    <div class="header-mobile" style="display:none;">
+      <div class="header-mobile-icon">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+
+    <div class="header-lock">
+      <header>
+
+        <button class="header-close"></button>
+
+        <form class="search-form">
+          
+          <p>Search recipes</p>
+          <div class="action">
+            <input type="text"  autoFocus placeholder="e.g. Omelette du fromage" />
+            <span class="clear"></span>
+          </div>
+
+        </form>
+
+        <div class="sort">
+
+          <h5>Sort:</h5>
+          
+          <select class="sort-by">
+            <option value="name">Name</option>
+            <option value="created_at">Newer</option>
+            <option value="d.created_at">Older</option>
+            <option value="d.time">Quickest</option>
+          </select>
+
+        </div>
+
+        <div class="filters">
+
+          <h5>Categories:</h5>
+          <ul class="filter">
+            <li class="favourite">
+              <input type="checkbox" name="fav" id = "fav">
+              <label class="checkmark" for="fav">Favourite</label>
+            </li>
+            <!--Show all categories-->
+          </ul>
+
+        </div>
+
+        <button id="filters-reset">Remove filters</button>
+
+              
+      </header>
+    </div>
+    <main>
+
+      <div class="recipes">
+        
+        <div class="new-recipe">
+                <p class="recipe-desc">To add a new recipe press the button below.</p>
+                <button class="new-recipe-btn">New recipe</button>
+        </div>
+
+      </div>
+      <!-- Update recipe -->
+      <div class="modal" id="edit-recipe" style="display: none;">
+
+        <div class="add-recipe">
+          <div class="add-recipe-header">
+            
+            <input type="text" autoFocus placeholder="Recipe name"/>
+            <button class="close"></button>
+
+          </div>
+          
+          <div class="add-recipe-body">
+
+            <div class="left">
+
+              <label>Image:
+
+                <input type="file" accept="image/*"/> 
+                <span>Choose</span>
+                <p class="file-name"></p>
+
+              </label>
+
+              <ul class="add-recipe-details">
+                  <li>
+                    Category: <input type="text" placeholder="Breakfast"/>
+                  </li>
+                  <li>
+                    Time: <input type="text"  placeholder="25 minutes"/>
+                  </li>
+                  <li>
+                    Servings: <input type="text" placeholder="5 pieces"/>
+                  </li>
+              </ul>
+
+              <h3>Ingredients</h3>
+              <ul class="add-recipe-scroll-lock">
+
+              </ul>
+
+            </div>
+
+            <div class="right">
+
+              <div  class="add-recipe-scroll-lock">
+                <h3>Instructions</h3>
+                <ol>
+
+                </ol>
+
+                <h3>Notes</h3>
+                <ul>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="add-recipe-footer">
+              <button>Save</button>
+          </div>
+
+        </div>
+
+      </div>
+      
+      <div class="modal" id="full-recipe" style="display: none;">
+
+        <div class="full-recipe">
+          <div class="full-recipe-header">
+
+            <h2></h2>
+            <button class="close"></button>
+
+          </div>
+          
+          <div class="full-recipe-body">
+
+            <div class="left">
+
+              <div class="full-recipe-image">
+                <img src="" alt=""/>
+                <div class="recipe-heart">
+                  <i></i>
+                </div>
+              </div>
+
+              <ul class="full-recipe-details">
+                  <li class="recipe-category">
+                    <i></i>
+                    <p></p>
+                  </li>
+                  <li class="recipe-time">
+                    <i></i>
+                    <p></p>
+                  </li>
+                  <li class="recipe-difficulty" >
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <p></p>
+                  </li>
+                  <li class="recipe-serving">
+                    <i></i>
+                    <i></i>
+                    <p></p>
+                  </li>
+              </ul>
+
+              <h3>Ingredients</h3>
+              <ul class="full-recipe-scroll-lock">
+              </ul>
+
+            </div>
+
+            <div class="right">
+
+              <div  class="full-recipe-scroll-lock">
+                <h3>Instructions</h3>
+                <ol>
+                </ol>
+
+                <h3>Notes</h3>
+                <ul>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="full-recipe-footer">
+              <button>Remove</button>
+              <button>Edit</button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-dialog" style="display:none;">
+
+          <div class="dialog">
+            <div class="dialog-header">
+
+              <button class="dialog-close"></button>
+
+            </div>
+            
+            <div class="dialog-body">
+              <p></p>
+            </div>
+
+            <div class="dialog-footer">
+                <button>Yes</button>
+                <button>No</button>
+            </div>
+
+          </div>
+
+      </div>
+
+
+    </main>
+  </div>
+
+  <script src="./jscript/jscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,1856 @@
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -moz-tap-highlight-color: rgba(0,0,0,0);
+}
+
+:root{
+  --aside-width: 280px;
+  --primary: #fec429;
+  --accent: #2b2b2b;
+  --secondary: #787878;
+  --toggle: 1;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+}
+
+input{
+  transition: all 0.4s cubic-bezier(0.5,0.5,0.5,2.5);
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: var(--accent);
+}
+
+p{
+  color: var(--secondary);
+}
+
+button{
+  width: 220px;
+  height: 35px;
+  background-color: var(--primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary);
+}
+
+@media (hover:hover){
+  button:hover{
+    background-color: white;
+    border: 1px solid var(--accent);
+  }
+}
+
+button:active{
+  background-color: white;
+  border: 1px solid var(--accent);
+}
+
+input:focus,
+input:focus-visible{
+  outline: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+#notifications{
+    width: auto;
+    height: 180px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    z-index: 9999;
+}
+
+.notification{
+    min-width: 320px;
+    background-color: white;
+    color: var(--accent);
+    border: 1px solid var(--primary);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.notification.error{
+    border-color: red;
+}
+
+@media only screen and (max-width: 825px){
+  #notifications{
+    width: 100%;
+    top: 20px;
+    left: 0;
+    bottom: unset;
+    right: unset;
+  }
+}
+
+.header-lock{
+  width: var(--aside-width);
+  height: 100%;
+  position: relative;
+}
+
+header{
+  width: var(--aside-width);
+  height: 100%;
+  min-height: 500px;
+  box-shadow: 2px 0 5px -2px rgba(0,0,0,0.1);
+  z-index: 20;
+  position: relative;
+  background-color: white;
+}
+
+header>button{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px;
+  left: 50%;
+  margin-left: -110px;
+}
+
+.header-close{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: var(--primary);
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 transparent;
+  transition: none;
+  left: unset;
+  display: none;
+}
+
+.header-close:hover{
+  background-color: white;
+  border-color: var(--accent);
+}
+
+.header-close::before{
+  content: "";
+  width: 2px;
+  height: 16px;
+  position: absolute;
+  background-color: var(--accent);
+  transform: rotate(45deg);
+  left: 8px;
+  top: 1px;
+}
+
+.header-close::after{
+  content: "";
+  width: 2px;
+  height: 16px;
+  position: absolute;
+  background-color: var(--accent);
+  transform: rotate(-45deg);
+  left: 8px;
+  top: 1px;
+}
+
+@media only screen and (max-width: 825px){/*600px*/
+  .header-lock{
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 990;
+    scrollbar-width: none;
+    left: calc(-1 * var(--toggle) * var(--aside-width));
+  }
+  
+  .header-lock::-webkit-scrollbar{
+    width: 0;
+  }
+
+  header{
+    min-height: 500px;
+    transition: all 0.1s ease-in;
+  }
+
+  .header-close{
+    display: block;
+    bottom:unset;
+    margin-bottom: unset;
+    position: absolute;
+  }
+}
+
+
+@media only screen and (max-width: 540px){
+  .header-lock{
+    width: 100%;
+    left: calc(-1 * var(--toggle) * 100%);
+  }
+
+  header{
+    width: 100%;
+  }
+}
+
+@media (hover:none) or (max-height: 500px){
+  .header-lock{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  .header-lock::-webkit-scrollbar{
+    width: 0;
+  }
+}
+
+header>form{
+  width: 100%;
+  height: 100px;
+  background-color: var(--primary); 
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.search-form>p{
+  width: 100%;
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.search-form>div{
+  width: 100%;
+  height: 35px;
+  display: flex;
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: 20px;
+}
+
+.search-form>div>input{
+  width: 100%;
+  height: 35px;
+  padding: 5px 10px;
+  padding-right: 15px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.search-form>.action>.clear{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  display: none;
+  background: linear-gradient(var(--accent) 0 0) 2px 9px/ 16px 2px no-repeat,
+              linear-gradient(var(--accent) 0 0) 9px 2px/ 2px 16px no-repeat;
+  transform: rotate(45deg);
+  cursor: pointer;
+  align-self: center;
+  right: 0;
+  margin-right: 7px;
+}
+
+.search-form>div>input.filled + .clear{
+  display: block;
+}
+
+.sort{
+  width: 100%;
+  padding: 0 20px;
+  margin-top: 25px;
+}
+
+select{
+  width: 100%;
+  height: 30px;
+  color: var(--accent);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.1s linear;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+option{
+  color: var(--secondary);
+}
+
+select:focus,
+select:focus-visible{
+  outline: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 0;
+  transition: all 0.3s cubic-bezier(0.5,0.5,0.5,2.5);
+}
+
+
+.sort>h5{
+  font-size: 1.1rem;
+  color: hsl(0, 30%, 30%);
+  font-weight: 500;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 5px;
+}
+
+.filters{
+  width: 100%;
+  max-height: 210px;
+  padding: 0 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filters::-webkit-scrollbar{
+  width: 0;
+}
+
+.filter{
+  margin-bottom: 20px;
+}
+
+.filters>h5{
+  font-size: 1.1rem;
+  color: hsl(0, 30%, 30%);
+  font-weight: 500;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 5px;
+}
+
+.filter>li{
+  display: flex;
+  align-items: center;
+  margin: 3px auto;
+  background: linear-gradient(to left,var(--primary), var(--primary)) 1.5rem bottom/0 2px no-repeat;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+@media (hover:hover){
+    .filter>li:hover{
+      background: linear-gradient(to left,var(--primary), var(--primary)) 1.5rem bottom/100% 2px no-repeat;
+    }
+
+    .filter>li:hover>label{
+      color: var(--accent);
+    }
+}
+
+.filter>li:active{
+  background: linear-gradient(to left,var(--primary), var(--primary)) 1.5rem bottom/100% 2px no-repeat;
+}
+
+.filter>li:active>label{
+  color: var(--accent);
+}
+
+input[type="checkbox"]{
+  display: none;
+}
+
+label.checkmark::before{
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  position: absolute;
+  background-color: white;
+  border: 1px solid var(--primary);
+  position: relative;
+  display: inline-block;
+  margin-right: 0.6rem;
+
+}
+
+input:checked + label.checkmark::after{
+  content: "";
+  position: absolute;
+  width: 0.4rem;
+  height: 0.7rem;
+  background-color: white;
+  border: 2px solid var(--primary);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+  top: 0;
+  left: 0;
+  margin-left: 6px;
+  margin-top: 2px;
+}
+
+.filter>li>label{
+  font-size: 1rem;
+  position: relative;
+  color: hsl(0, 30%, 50%);
+  transition: all 0.2s linear;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.load-main{
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0deg 24% 96%);
+    padding: 25px 15px;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 5px solid var(--primary);
+    border-top-color: transparent;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 825px){/*600px*/
+  main.load-main{
+    width: 100%;
+    padding-top: 60px;
+  }
+}
+
+main{
+  width: calc(100% - var(--aside-width));
+  height: 100%;
+  background-color: hsl(0deg 24% 96%);
+  padding: 15px 15px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+main::-webkit-scrollbar{
+  width: 0;
+}
+
+.recipes{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+@media only screen and (max-width: 825px){/*600px*/
+  main{
+    width: 100%;
+    padding-top: 60px;
+  }
+}
+
+.new-recipe{
+  width: auto;
+  height: 220px;
+  display: flex;
+  overflow: hidden;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 3px rgb(0 0 0 / 20%);
+  transition: all 0.1s linear;
+  position: relative;
+  cursor: default;
+  justify-content: space-evenly;
+  padding: 0 15px;
+  flex-grow: 1;
+}
+
+@media (hover:hover){
+  .new-recipe:hover{
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  }
+}
+
+.new-recipe:active{
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+
+.new-recipe>p{
+  text-align: center;
+}
+
+.new-recipe>.recipe-desc{
+  text-indent: 0;
+}
+
+.new-recipe>button{
+  position: absolute;
+  bottom: 12px;
+  align-self: center;
+}
+
+.recipe{
+  width: auto;
+  height: 220px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s linear;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.recipe-details{
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.recipe-name{
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--secondary);
+  transition: all 0.1s linear;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.recipe-stats{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.recipe-time{
+  display: flex;
+  line-height: 20px;
+}
+
+.recipe-time>i{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--secondary);
+  display: block;
+  margin-right: 5px;
+  position: relative;
+}
+
+.recipe-time>i::before{
+  content: "";
+  width: 7px;
+  height: 9px;
+  border: 1px solid var(--secondary);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 2px;
+}
+
+.recipe-difficulty{
+  display: flex;
+  align-items: flex-end;
+}
+
+.recipe-difficulty>i{
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--secondary);
+  margin-right: 3px;
+}
+
+.recipe-difficulty>i:nth-child(2){
+  height: 15px;
+}
+
+.recipe-difficulty>i:nth-child(3){
+  height: 20px;
+}
+
+.recipe-difficulty.d1>i:nth-child(-n+1),
+.recipe-difficulty.d2>i:nth-child(-n+2),
+.recipe-difficulty.d3>i:nth-child(-n+3),
+.recipe-difficulty>i.selected{
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.recipe-favourite>i{
+  width: 14px;
+  height: 20px;
+  display: block;
+  color: var(--secondary);
+  border: 1px solid currentColor;
+  border-bottom-color: transparent;
+  border-top-left-radius: 5px;
+  position: relative;
+  transition: all 0.1s linear;
+}
+
+.recipe-favourite>i.selected{
+  background-color: var(--accent);
+  border-color: var(--accent);
+  border-bottom: transparent;
+}
+
+.recipe-favourite>i.selected::before{
+  border-color: transparent;
+  margin-top: 14px;
+}
+
+.recipe-favourite>i::before{
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentColor;
+  background-color: white;
+  position: absolute;
+  margin-left: 1px;
+  margin-top: 13px;
+  transform: rotate(45deg);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transition: all 0.1s linear;
+}
+
+.recipe-image{
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.recipe-image>img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+@media (hover:hover){
+  .recipe:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .recipe:hover h3.recipe-name{
+    color: var(--accent);
+  }
+}
+
+.recipe:active{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.recipe:active h3.recipe-name{
+  color: var(--accent);
+}
+
+.recipe>button{
+  position: absolute;
+  bottom: 12px;
+  align-self: center;
+}
+
+.recipe-image>.recipe-heart{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s linear;
+}
+
+.recipe-image>.recipe-heart>i{
+  width: 12px;
+  height: 20px;
+  position: relative;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: currentColor;
+  border: 1px solid var(--accent);
+  transform: rotate(45deg);
+  margin-left: 6px;
+  transition: all 0.1s linear;
+}
+
+.recipe-image>.recipe-heart>i::before{
+  content: "";
+  width: 12px;
+  height: 20px;
+  position: absolute;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: currentColor;
+  border: 1px solid var(--accent);
+  transform: rotate(-90deg);
+  margin-top: 3px;
+  margin-left: -5px;
+}
+
+.recipe-image>.recipe-heart>i::after{
+  content: "";
+  width: 10px;
+  height: 6px;
+  position: absolute;
+  background-color: currentColor;
+  margin-top: 6px;
+}
+
+.recipe-image>.recipe-heart.selected>i{
+  --accent: rgba(235, 52, 63);
+  color: rgba(235, 52, 63);
+}
+
+@media (hover:hover){
+  .recipe-image>.recipe-heart:hover>i{
+    --accent: rgba(235, 52, 63);
+    color: rgba(235, 52, 63);
+  }
+
+  .recipe-image>.recipe-heart:hover{
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.recipe-image>.recipe-heart:active>i{
+  --accent: rgba(235, 52, 63);
+  color: rgba(235, 52, 63);
+}
+
+.recipe-image>.recipe-heart:active{
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.modal{
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 9001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar{
+    width: 0;
+}
+
+.add-recipe{
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.add-recipe-header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.add-recipe-header>input{
+    width: calc(100% - 35px);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: inset 0px -2px 0px -1px var(--secondary);
+}
+
+.add-recipe-header>input:focus,
+.add-recipe-header>input:focus-visible{
+    box-shadow: inset 0px -2px 0px -1px var(--accent);
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--primary);
+    right: 15px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s linear;
+}
+
+.close:active{
+    background-color: white;
+    border-color: var(--accent);
+}
+
+@media (hover:hover){
+    .close:hover{
+        background-color: white;
+        border-color: var(--accent);
+    }
+}
+
+.close::before{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.close::after{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(-45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.add-recipe-body{
+    display: flex;
+    height: calc(100% - 120px);
+}
+
+.add-recipe-body>div{
+    width: 50%;
+    padding: 10px 15px;
+}
+
+.add-recipe-body>.left{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    padding-top: 0;
+}
+
+.add-recipe-body>.left>label{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    margin-top: 13px;
+}
+
+.add-recipe-body>.left>label>span{
+    padding: 2px 10px;
+    font-weight: initial;
+    margin: 0 23px;
+    background-color: var(--primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary);
+    position: relative;
+}
+
+@media (hover:hover){
+    .add-recipe-body>.left>label>span:hover{
+      background-color: white;
+      border: 1px solid var(--accent);
+    }
+}
+
+.add-recipe-body>.left>label>span:active{
+  background-color: white;
+  border: 1px solid var(--accent);
+}
+
+.add-recipe-body>.left>label>p{
+    font-size: 0.9rem;
+    width: calc(100% - 156px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.add-recipe-body>.left>label>input{
+    display: none;
+}
+
+.add-recipe-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.add-recipe-details>li{
+    width: 100%;
+    height: 24px;
+    font-size: 1rem;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 500;
+}
+
+.left>.add-recipe-details>li>input{
+    width: 285px;
+    padding-left: 10px;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 13px/ 4px 1px repeat-x, white;
+}
+
+.left>.add-recipe-details>li>input:focus,
+.left>.add-recipe-details>li>input:focus-visible{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 13px/ 100% 1px no-repeat, white;
+}
+
+.add-recipe-body>.left>h3,
+.add-recipe-body>.right>.add-recipe-scroll-lock>h3{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>h3{
+    margin-top: 0;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>div{
+    width: calc(100% - 23px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>div>h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>ol>div{
+    width: calc(100% - 23px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock>ol>div>h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.left>.add-recipe-scroll-lock>li>input{
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 3px, transparent 3px, transparent 4px) left 15px/ 4px 1px repeat-x, white;
+    width: 80px;
+}
+
+.add-recipe-body .add-recipe-scroll-lock li{
+    width: calc(100% - 28px);
+    height: 20px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 15px/ 4px 1px repeat-x;
+    position: relative;
+}
+
+ul.add-recipe-scroll-lock>li:has(>button.mini-add),
+.add-recipe-scroll-lock>ol>li:has(>button.mini-add),
+.add-recipe-scroll-lock>ul>li:has(>button.mini-add){
+    margin-top: 8px;
+}
+
+li>input{
+    background: linear-gradient(to right, var(--accent), var(--accent)) center 15px/ 0% 1px no-repeat, white;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+
+.right>.add-recipe-scroll-lock li>input{
+    width: 100%;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 15px/ 4px 1px repeat-x, hsl(0deg 25% 96%);
+}
+
+.left li>input:focus-visible,
+.left li>input:focus{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 15px/ 100% 1px no-repeat, white;
+    box-shadow: 0 0 0 transparent;
+}
+
+.add-recipe-body>.right>.add-recipe-scroll-lock li>input:focus-visible,
+.add-recipe-body>.right>.add-recipe-scroll-lock li>input:focus{
+    background: linear-gradient(to right, var(--accent), var(--accent)) left 15px/ 100% 1px no-repeat, hsl(0deg 24% 96%);
+    box-shadow: 0 0 0 transparent;
+}
+
+.add-recipe-body>.left>.add-recipe-scroll-lock>li>p{
+    background-color: white;
+}
+
+.add-recipe-scroll-lock{
+    overflow-y: scroll;
+    scrollbar-width: none; 
+}
+
+.add-recipe-scroll-lock::-webkit-scrollbar{
+  width: 0;
+}
+
+.left>.add-recipe-scroll-lock{
+    height: 265px;
+}
+
+.right>.add-recipe-scroll-lock{
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.right>.add-recipe-scroll-lock>ol{
+    margin-bottom: 20px;
+}
+
+.right>.add-recipe-scroll-lock>ol>li{
+    margin-bottom:5px;
+    list-style: decimal outside none;
+}
+
+.right>.add-recipe-scroll-lock>ul>li{
+    list-style: disc outside none;
+}
+
+.right>add-recipe-scroll-lock>ol>li:last-child,
+.right>add-recipe-scroll-lock>ul>li:last-child{
+    margin-left: 0;
+    list-style: none;
+}
+
+.right>.add-recipe-scroll-lock li{
+    width: calc(100% - 28px);
+    height: 20px;
+    margin-left: 5px;
+}
+
+.right>.add-recipe-scroll-lock li>p{
+    background-color: hsl(0deg 24% 96%);
+	white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-recipe-body>.right{
+    width: calc(50% - 15px);
+    background-color: hsl(0deg 24% 96%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.add-recipe-footer{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.add-recipe-footer>button{
+    align-self: center;
+}
+
+.mini-add{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: -22px;
+    color: var(--accent);
+}
+
+.mini-add::before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-left: 2px;
+    margin-top: -1px;
+}
+
+.mini-add::after{
+    content: "";
+    width: 2px;
+    height: 10px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-top: 2px;
+    top: 0;
+    margin-left: 6px;
+}
+
+
+.mini-remove{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: -22px;
+    color: var(--accent);
+}
+
+.mini-remove::before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+    display: block;
+    position: absolute;
+    margin-left: 2px;
+    margin-top: -1px;
+}
+
+
+@media only screen and (max-width: 825px){
+    .add-recipe-body{
+        flex-direction: column;
+    } 
+
+    .modal{
+        align-items: flex-start;
+        overflow-y: scroll;
+    }
+
+    .add-recipe{
+        width: auto;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .add-recipe-body>.right,
+    .add-recipe-body>div{
+        width: 100%;
+    }
+
+    .add-recipe-footer>button{
+        width: 150px;
+    }
+
+    .right>.add-recipe-scroll-lock{
+        max-height: 500px;
+        height: auto
+    }
+
+    .left>.add-recipe-scroll-lock{
+        max-height: 250px;
+        height: auto;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .add-recipe{
+        margin: 0;
+        width: 100%;
+    }
+}
+
+.modal{
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-recipe{
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.full-recipe-header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.full-recipe-header>h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--primary);
+    right: 15px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s linear;
+}
+
+@media (hover:hover){
+    .close:hover{
+        background-color: white;
+        border-color: var(--accent);
+    }
+}
+
+.close:active{
+    background-color: white;
+    border-color: var(--accent);
+}
+
+.close::before{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.close::after{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(-45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.full-recipe-body{
+    display: flex;
+    height: calc(100% - 120px);
+}
+
+.full-recipe-body>div{
+    width: 50%;
+    padding: 10px 15px;
+}
+
+.full-recipe-body>.left{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    padding-top: 0;
+}
+
+.full-recipe-body>.left>.full-recipe-image{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-recipe-body>.left>img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.full-recipe-details{
+    width: 100%;
+    height: 15px;
+    padding: 0 2px;
+    display: flex;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.full-recipe-details>li{
+    margin-right: 20px;
+}
+
+.full-recipe-details>li>p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.full-recipe-details>.recipe-category{
+    display: flex;
+}
+
+.full-recipe-details>.recipe-category>i{
+    width: 10px;
+    height: 7px;
+    border: 1px solid var(--secondary);
+    border-top-color: transparent;
+    background: linear-gradient(to left, var(--secondary), var(--secondary)) left 3px/8px 1px no-repeat;
+    margin-right: 7px;
+    margin-top: 6px;
+    position: relative;
+    z-index: 9;
+}
+
+.full-recipe-details>.recipe-category>i::before{
+    content: "";
+    width: 14px;
+    height: 6px;
+    display: block;
+    border-radius: 50px;
+    margin-top: -5px;
+    margin-left: -3px;
+    border: 1px solid var(--secondary);
+    position: relative;
+    z-index: -5;
+}
+
+.full-recipe-details>.recipe-category>i::after{
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid var(--secondary);
+    transform: rotate(45deg);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    margin-top: -7px;
+    z-index: 5;
+}
+
+.full-recipe-details>.recipe-time{
+    display: flex;
+    line-height: 15px;
+}
+
+.full-recipe-details>.recipe-time>i{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--secondary);
+    display: block;
+    margin-right: 5px;
+    position: relative;
+}
+
+.full-recipe-details>.recipe-time>i::before{
+    content: "";
+    width: 5px;
+    height: 7px;
+    border: 1px solid var(--secondary);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 1px;
+}
+
+.full-recipe-details>.recipe-difficulty{
+    display: flex;
+    align-items: flex-end;
+}
+
+.full-recipe-details>.recipe-difficulty>i{
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--secondary);
+    margin-right: 3px;
+}
+
+.full-recipe-details>.recipe-difficulty>i:nth-child(2){
+    height: 10px;
+}
+
+.full-recipe-details>.recipe-difficulty>i:nth-child(3){
+    height: 15px;
+    margin-right: 5px;
+}
+
+.full-recipe-details>.recipe-difficulty>i.selected{
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.full-recipe-details>.recipe-serving{
+    display: flex;
+}
+
+.full-recipe-details>.recipe-serving>i:first-child{
+    width: 5px;
+    height: 8px;
+    background-color: white;
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 2px;
+}
+
+.full-recipe-details>.recipe-serving>i:first-child::before{
+    content: "";
+    width: 3px;
+    height: 10px;
+    border: 1px solid var(--secondary);
+    border-top-color: transparent;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    position: absolute;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.full-recipe-details>.recipe-serving>i:nth-child(2){
+    margin-right: 10px;
+    width: 5px;
+    height: 8px;
+    background-color: white;
+    border: 1px solid var(--secondary);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-color: transparent;
+    position: relative;
+}
+
+.full-recipe-details>.recipe-serving>i:nth-child(2)::after{
+    content: "";
+    width: 1px;
+    height: 5px;
+    background-color: var(--secondary);
+    position: absolute;
+    margin-top: -1px;
+    margin-left: 1px;
+}
+
+.full-recipe-details>.recipe-serving>i:nth-child(2)::before{
+    content: "";
+    width: 3px;
+    height: 10px;
+    border: 1px solid var(--secondary);
+    border-top-color: transparent;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    position: absolute;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.full-recipe-body>.left>h3,
+.full-recipe-body>.right>.full-recipe-scroll-lock>h3{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>h3{
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 10px;
+}
+
+.full-recipe-body>.left>.full-recipe-scroll-lock>h4{
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock h4{
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.full-recipe-body>.left>.full-recipe-scroll-lock>li{
+    height: 20px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    background: repeating-linear-gradient(to right, var(--accent) , var(--accent) 1px, transparent 2px, transparent 4px) left 15px/ 4px 1px repeat-x;
+}
+
+.full-recipe-body>.left>.full-recipe-scroll-lock>li>p{
+    background-color: white;
+}
+
+.left>.full-recipe-scroll-lock>li>p:last-child{
+    color: var(--accent);
+}
+
+.full-recipe-scroll-lock{
+    overflow-y: scroll;
+    scrollbar-width: none; 
+}
+
+.full-recipe-scroll-lock::-webkit-scrollbar{
+  width: 0;
+}
+
+.left>.full-recipe-scroll-lock{
+    height: 185px;
+    margin-top: 3px;
+}
+
+.right>.full-recipe-scroll-lock{
+    height: 100%;
+    margin-bottom: 12px;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>ol{
+    margin-bottom: 20px;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>ol>li{
+    margin-left: 25px;
+    list-style: decimal outside none;
+    counter-increment: steps;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>ol>li::marker{
+    content: counters(steps, "") ". ";
+}
+
+.right>.full-recipe-scroll-lock>ol>h4 + li{
+    counter-reset: steps 0;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>ol>li
+
+.full-recipe-body>.right{
+    width: calc(50% - 15px);
+    background-color: hsl(0deg 24% 96%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock>ul>li{
+    list-style: disc outside none;
+    margin-left: 20px;
+}
+
+.full-recipe-body>.right>.full-recipe-scroll-lock li{
+    margin-bottom: 7px;
+}
+
+.right>.full-recipe-scroll-lock li::marker{
+    color: var(--primary)
+}
+
+.full-recipe-footer{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.full-recipe-footer>button{
+    align-self: center;
+}
+
+.full-recipe-image>.recipe-heart{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.1s linear;
+    cursor: pointer;
+}
+
+.full-recipe-image>.recipe-heart>i{
+    width: 12px;
+    height: 20px;
+    position: relative;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: currentColor;
+    border: 1px solid var(--accent);
+    transform: rotate(45deg);
+    margin-left: 6px;
+    transition: all 0.1s linear;
+}
+
+.full-recipe-image>.recipe-heart>i::before{
+    content: "";
+    width: 12px;
+    height: 20px;
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: currentColor;
+    border: 1px solid var(--accent);
+    transform: rotate(-90deg);
+    margin-top: 3px;
+    margin-left: -5px;
+}
+
+.full-recipe-image>.recipe-heart>i::after{
+    content: "";
+    width: 10px;
+    height: 6px;
+    position: absolute;
+    background-color: currentColor;
+    margin-top: 6px;
+}
+
+.full-recipe-image>.recipe-heart.selected>i{
+    --accent: rgba(235, 52, 63);
+    color: rgba(235, 52, 63);
+}
+
+@media (hover:hover){
+    .full-recipe-image>.recipe-heart:hover>i{
+        --accent: rgba(235, 52, 63);
+        color: rgba(235, 52, 63);
+    }
+
+    .full-recipe-image>.recipe-heart:hover{
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.full-recipe-image>.recipe-heart:active>i{
+    --accent: rgba(235, 52, 63);
+    color: rgba(235, 52, 63);
+}
+
+.full-recipe-image>.recipe-heart:active{
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 825px){
+    .full-recipe-body{
+        flex-direction: column;
+    } 
+
+    .full-recipe{
+        width: auto;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .full-recipe-header{
+        padding: 0 15px;
+    }
+
+    .full-recipe-header>h2{
+        width: calc(100% - 50px); 
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .full-recipe-body>.right,
+    .full-recipe-body>div{
+        width: 100%;
+    }
+
+    .full-recipe-footer>button{
+        width: 150px;
+    }
+
+    .right>.full-recipe-scroll-lock{
+        max-height: 500px;
+        height: auto
+    }
+
+    .left>.full-recipe-scroll-lock{
+        max-height: 250px;
+        height: auto;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .full-recipe{
+        margin: 0;
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 370px){
+    .full-recipe-details>li{
+        margin: 0 auto;
+    }
+}
+
+.modal-dialog{
+    inset: 0;
+    background-color: transparent;
+    position: fixed;
+    z-index: 9001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog{
+    width: 250px;
+    height: 160px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-header{
+    width: 100%;
+    height: 40px;
+}
+
+.dialog-close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--primary);
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s linear;
+}
+
+.dialog-close:hover{
+    background-color: white;
+    border-color: var(--accent);
+}
+
+.dialog-close::before{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.dialog-close::after{
+    content: "";
+    width: 2px;
+    height: 16px;
+    position: absolute;
+    background-color: var(--accent);
+    transform: rotate(-45deg);
+    left: 8px;
+    top: 1px;
+}
+
+.dialog-body{
+    display: flex;
+    width: 100%;
+    height: 70px;
+    padding: 10px 15px;
+    align-items: center;
+}
+
+.dialog-body>p{
+    margin-top: -10px;
+    font-size: 0.95rem;
+}
+
+.dialog-footer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.dialog-footer>button{
+    width: 40%;
+    height: 30px;
+    font-size: 0.9rem;
+}
