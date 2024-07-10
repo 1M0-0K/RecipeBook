@@ -21,7 +21,8 @@ For ReactJs version check the [Main Branch](https://github.com/1M0-0K/RecipeBook
 ## Setup
 1. Deploy:
    * `Change database info in /config/database.php`
-   * `Change the directory where you want the images to be stored in /src/api/recipe.php. Default if /resource/images/`
+   * `Change the directory where you want the images to be stored in /src/api/recipe.php. Default is /resource/images/`
+   * `Upload project to host`
 
 ## Preview
 The website is a Single Page Website with the possibility of searching, sorting and filtering the recipes in the left side of the page while in the right side of the page the recipes are displayed.
